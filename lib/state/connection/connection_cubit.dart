@@ -123,9 +123,14 @@ class ConnectionCubit extends Cubit<ConnectionState> {
 
   void _setupConnectivityListener() {
     _connectivitySubscription ??= Connectivity().onConnectivityChanged.listen(
+<<<<<<< Updated upstream
       (List<ConnectivityResult> results) async {
         if (results.any(
             (ConnectivityResult status) => status == ConnectivityResult.none)) {
+=======
+      (List<ConnectivityResult> statuses) async {
+        if (statuses.contains(ConnectivityResult.none) || statuses.isEmpty) {
+>>>>>>> Stashed changes
           emit(const ConnectionDisconnectedState());
         }
       },
